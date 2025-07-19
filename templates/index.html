@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Baby Birth Prediction</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f8f2ec;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        background: #fffdf9;
+        border: 4px dotted #d3a17e;
+        border-radius: 16px;
+        padding: 30px 40px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 550px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #c47a64;
+        font-family: "Cursive", sans-serif;
+        font-size: 2.5rem;
+      }
+
+      label {
+        display: block;
+        margin-top: 15px;
+        color: #7a5c50;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 2px solid #f3d5c0;
+        border-radius: 10px;
+        background: #fffaf5;
+      }
+
+      input[type="submit"] {
+        margin-top: 25px;
+        background-color: #f4a698;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #de7c67;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        color: #b88c76;
+      }
+
+      .prediction {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1.4rem;
+        color: #9c6b5a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>👶 Baby Birth Prediction</h1>
+      <form action="/predict" method="POST">
+        <label for="days">Gestational Days:</label>
+        <input type="number" id="days" name="Gestational.Days" required />
+
+        <label for="age">Maternal Age:</label>
+        <input type="number" id="age" name="Maternal.Age" required />
+
+        <label for="height">Maternal Height (inches):</label>
+        <input type="number" id="height" name="Maternal.Height" required />
+
+        <label for="weight">Maternal Pregnancy Weight (lbs):</label>
+        <input
+          type="number"
+          id="weight"
+          name="Maternal.Pregnancy.Weight"
+          required
+        />
+
+        <label for="smoker">Maternal Smoker:</label>
+        <select id="smoker" name="Maternal.Smoker" required>
+          <option value="True">Yes</option>
+          <option value="False">No</option>
+        </select>
+
+        <input type="submit" value="Predict Birth Weight" />
+      </form>
+
+      {% if prediction %}
+      <div class="prediction">
+        <h3>Predicted Birth Weight: {{ prediction }} lbs</h3>
+      </div>
+      {% endif %}
+
+      <div class="footer">💗 Boho Baby Vibes Only 💗</div>
+    </div>
+  </body>
+</html>
