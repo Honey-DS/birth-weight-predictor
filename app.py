@@ -22,7 +22,7 @@ def get_cleaned_data(form_data):
     return cleaned_data
 
 # Load model once at startup
-with open("model/model.pkl", 'rb') as obj:
+with open("model.pkl", 'rb') as obj:
     model = pickle.load(obj)
     
     @app.route('/', methods = ['GET'])
